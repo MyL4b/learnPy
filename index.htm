@@ -2,151 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure responsiveness on mobile -->
   <title>Learning Python</title>
 
-
-
   <style>
+    /* General page styles */
     body {
-      background: #d3d3d3;
-      font-family: "Times New Roman", serif;
-      display: flex;
-      justify-content: center;
+      background: #d3d3d3;  /* Light gray background */
+      font-family: "Times New Roman", serif;  /* Font style */
+      display: flex;  /* Use flexbox to center content */
+      justify-content: center;  /* Horizontally center the content */
       background-position: center;
       padding: 0;
-	  margin: 0;
+      margin: 0;
     }
 
+    /* Main content container */
     .page {
-      background: white;
-      display: flex;
-      flex-direction: column;
-      padding: 10mm;
-      width: max-content;
-      min-height: max-content;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      color: #111;
-      line-height: 1.6;
-      border-radius: 30px;  
-      position: relative;
+      background: white;  /* White background for the page */
+      display: flex;  /* Flexbox layout */
+      flex-direction: column;  /* Stack elements vertically */
+      padding: 10mm;  /* Add padding */
+      width: 90%;  /* Set width to 90% for better mobile adaptability */
+      max-width: 800px;  /* Maximum width to prevent it from getting too wide */
+      min-height: max-content;  /* Ensure content height adjusts */
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);  /* Add shadow for depth */
+      color: #111;  /* Text color */
+      line-height: 1.6;  /* Increase line height for readability */
+      border-radius: 30px;  /* Rounded corners */
+      position: relative;  /* For positioning navigation buttons */
     }
-	
-	/* Page title */
+    
+    /* Title styling */
 	.title {
-		color: #003366;
-		font-size: clamp(24px, 3vw, 32px);
-		font-weight: 700;
-		text-align: left;
-		margin-bottom: 1px;
-		margin-top: 0px ;
+		color: #003366;  /* Dark blue color for title */
+		font-size: clamp(24px, 5vw, 32px);  /* Responsive font size */
+		font-weight: 700;  /* Bold font */
+		text-align: left;  /* Align text to the left */
+		margin-bottom: 1px;  /* Space below the title */
+		margin-top: 0px;  /* No space above the title */
 	}
 	
-	/* Line divider under title */
+	/* Divider styling */
 	.divider {
 		width: 100%;
 		height: 4px;
-		margin: 0 0 15px 0;
+		margin: 0 0 15px 0;  /* Space below the divider */
 		border: none;
-		background: linear-gradient(to right, #555 0%, #999 30%, transparent 100%);
+		background: linear-gradient(to right, #555 0%, #999 30%, transparent 100%);  /* Gradient effect */
 	}
 
+    /* Button styling */
     button {
-      display: block;
-      margin: 10px 10px 0px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 14pt;
-      border-radius: 6px;
-      cursor: pointer;
-	  font-weight: 600;
-	  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-	  transition: transform 0.4s ease, background 0.4s ease;
+      display: block;  /* Make the button block-level */
+      margin: 10px 10px 0px;  /* Add margins around the button */
+      background-color: #007bff;  /* Blue background */
+      color: white;  /* White text */
+      border: none;  /* No border */
+      padding: 10px 20px;  /* Padding inside the button */
+      font-size: 14pt;  /* Font size */
+      border-radius: 6px;  /* Rounded corners */
+      cursor: pointer;  /* Pointer cursor on hover */
+      font-weight: 600;  /* Semi-bold text */
+      box-shadow: 0 3px 10px rgba(0,0,0,0.5);  /* Shadow effect */
+      transition: transform 0.4s ease, background 0.4s ease;  /* Smooth transition on hover */
+      width: 100%;  /* Make button full-width on mobile */
     }
 
+    /* Button hover effect */
     button:hover {
-	  background: linear-gradient(135deg, #0056b3, #1f75cc);
-	 
+      background: linear-gradient(135deg, #0056b3, #1f75cc);  /* Gradient background on hover */
     }
 
+    /* Slideshow container */
 	.slideshow-container {
-	  position: relative;
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-
-	  width: 100%;          /* Take full width of parent */
-	  max-width: 100%;      /* Prevent overflow */
-	  height: auto;         /* Allow height to adjust */
-	  
+	  position: relative;  /* Positioning relative to its container */
+	  display: flex;  /* Flexbox for centering */
+	  justify-content: center;  /* Center the images horizontally */
+	  align-items: center;  /* Center the images vertically */
+	  width: 100%;
+	  max-width: 100%;  /* Prevent image from exceeding container width */
+	  height: auto;  /* Allow height to adjust automatically */
 	}
 
+	/* Styling for images in the slideshow */
 	.slideshow-container img {
-	  width: 100%;           /* Make image fill the container width */
-	  height: auto;          /* Maintain aspect ratio */
-	  max-width: 100%;       /* Prevent image from stretching too wide */
-	  border-radius: 10px;
-	  object-fit: cover;     /* Optional: control how image fits if dimensions are constrained */
+	  width: 100%;  /* Make the image take full width */
+	  height: auto;  /* Maintain aspect ratio */
+	  max-width: 100%;  /* Ensure the image doesn't exceed container size */
+	  border-radius: 10px;  /* Rounded corners */
+	  object-fit: cover;  /* Crop the image to fill the container */
 	}
 
-    /* Edge arrows */
+    /* Navigation buttons (left and right arrows) */
     .nav-btn {
-      all: unset;  
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      mix-blend-mode: difference;
-      padding: 20px 20px;
-      font-size: 40px;
-      cursor: pointer;
-      user-select: none;
+      all: unset;  /* Remove default button styles */
+      position: absolute;  /* Position the buttons on top of the slideshow */
+      top: 50%;  /* Vertically center the buttons */
+      transform: translateY(-50%);  /* Adjust for perfect centering */
+      color: white;  /* White text color */
+      mix-blend-mode: difference;  /* Ensure buttons are visible on any image */
+      padding: 20px 20px;  /* Button padding */
+      font-size: 40px;  /* Large text for the arrows */
+      cursor: pointer;  /* Pointer cursor on hover */
+      user-select: none;  /* Prevent text selection */
     }
 
+    /* Button hover effect */
     .nav-btn:hover {
-      color: #0000FF;
-      background: none;
+      color: #0000FF;  /* Change arrow color on hover */
+      background: none;  /* Remove background */
     }
 
-    .left { left: -50px; }
-    .right { right: -50px; }
+    /* Positioning of left and right navigation buttons */
+    .left { left: 10px; }  /* Left button on the left side */
+    .right { right: 10px; }  /* Right button on the right side */
 
+    /* Make navigation buttons more mobile-friendly */
+    @media (max-width: 768px) {
+      .nav-btn {
+        font-size: 30px;  /* Smaller arrows for smaller screens */
+        padding: 15px;  /* Reduced padding */
+      }
 
+      .page {
+        padding: 5mm;  /* Reduce padding on mobile */
+        width: 95%;  /* Allow content to be slightly more compact on mobile */
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="page">
 	<div class="header">
-		<h1 class="title">An introduction to Python</h1>
-		<hr class="divider">
+		<h1 class="title">An introduction to Python</h1>  <!-- Main title -->
+		<hr class="divider">  <!-- Horizontal divider -->
 	</div>
 	
-	
+    <!-- Slideshow container -->
     <div class="slideshow-container">
-      <img id="slide" src="1.png" alt="Page 1">
-      <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
-      <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+      <img id="slide" src="1.png" alt="Page 1">  <!-- Initial image (first slide) -->
+      <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>  <!-- Left navigation button -->
+      <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>  <!-- Right navigation button -->
     </div>
 
-    <button onclick="window.open('IDE.htm', '_blank')">Open Editor</button>
-
+    <button onclick="window.open('IDE.htm', '_blank')">Open Editor</button>  <!-- Button to open the IDE in a new tab -->
   </div>
 
-
-
   <script>
-    // Slideshow
-    const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
-    let currentSlide = 0;
-    const slide = document.getElementById('slide');
-    function showSlide(index) { slide.src = images[index]; }
-    function nextSlide() { currentSlide = (currentSlide + 1) % images.length; showSlide(currentSlide); }
-    function prevSlide() { currentSlide = (currentSlide - 1 + images.length) % images.length; showSlide(currentSlide); }
+	// Initialize the images for the slideshow (from 1.jpg to 35.jpg)
+	const totalImages = 35; 
+	const images = [];
+	for (let i = 1; i <= totalImages; i++) {
+	  images.push(`${i}.jpg`);  // Dynamically generate the image names
+	}
+    
+	let currentSlide = 0;  // Track the current slide index
+    const slide = document.getElementById('slide');  // Get the image element
+
+	// Function to display a slide
+    function showSlide(index) {
+	  const img = new Image();  // Create a new Image object to check if the image exists
+	  
+	  // When the image loads successfully
+	  img.onload = () => { 
+		slide.src = images[index];  // Set the image source to the current slide
+	  };
+	  
+	  // If the image fails to load (not found)
+	  img.onerror = () => { 
+		console.warn(`Image not found: ${images[index]}`);  // Log a warning to the console
+		nextSlide();  // Skip to the next image
+	  };
+	  
+	  img.src = images[index];  // Try to load the image
+	}
+
+    // Function to go to the next slide
+    function nextSlide() { 
+      currentSlide = (currentSlide + 1) % images.length;  // Increment slide index and loop back to 0
+      showSlide(currentSlide);  // Show the next slide
+    }
+    // Function to go to the previous slide
+    function prevSlide() { 
+      currentSlide = (currentSlide - 1 + images.length) % images.length;  // Decrement slide index and loop to the end
+      showSlide(currentSlide);  // Show the previous slide
+    }
+
+    // Initial slide display
     showSlide(currentSlide);
-
-
   </script>
 </body>
 </html>
