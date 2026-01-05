@@ -60,4 +60,4 @@ It consists of **two main components**:
 ## 🔗 Live Demo
 Explore the interactive campus map and challenges in action: 
 
-👉 [Try it Live](https://myl4b.github.io/MorningFLow/Personal%20contribution/map.html)
+👉 [Try it Live](https://myl4b.github.io/LearnPY/LearnPY%20Material/index.htm)
