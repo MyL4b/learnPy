@@ -56,3 +56,8 @@ It consists of **two main components**:
 - ✅ Clean, educational UI
 
 ---
+
+## 🔗 Live Demo
+Explore the interactive campus map and challenges in action: 
+
+👉 [Try it Live](https://myl4b.github.io/MorningFLow/Personal%20contribution/map.html)
